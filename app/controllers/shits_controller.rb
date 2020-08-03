@@ -6,7 +6,7 @@ class ShitsController < ApplicationController
     end
 
     def create
-        shit = Shit.create(shit_params) 
+        shit = Shit.create(shit_params)
         render json: shit, except: [:created_at, :updated_at], include: [:tips]
     end
 
