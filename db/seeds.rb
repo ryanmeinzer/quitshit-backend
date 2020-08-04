@@ -9,9 +9,9 @@
 Shit.destroy_all
 Tip.destroy_all
 
-Shit.create(name: "Smoking")
-Shit.create(name: "Biting Nails")
-Shit.create(name: "Drinking")
+Shit.create(name: "Smoking", shit_count: 0)
+Shit.create(name: "Biting Nails", shit_count: 0)
+Shit.create(name: "Drinking", shit_count: 0)
 
 Tip.create(description: "chew gum", shit_id: 1)
 Tip.create(description: "do 10 pushups every time you want a cigarette", shit_id: 1)
