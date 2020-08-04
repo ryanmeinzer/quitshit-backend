@@ -16,7 +16,7 @@ class ShitsController < ApplicationController
 
     def update
         shit = Shit.find(params[:id]) 
-        shit.update(shit_params)
+        shit.update(shit_params) 
         render json: shit, except: [:created_at, :updated_at], include: [:tips]
     end
 
