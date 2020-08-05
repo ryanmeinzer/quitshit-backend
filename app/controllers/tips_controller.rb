@@ -9,9 +9,14 @@ class TipsController < ApplicationController
     end
 
     def create
-        tip = Tip.create(tip_params) 
+        tip = Tip.create(tip_params)
+        if tip.valid?
+            render json: TipSerializer.new(tip).to_serialized_json
+        else
+            render json: {message: "'#{tip.description}' already exists as a quit tip 💡"}
+        end
         # render json: tip, except: [:created_at, :updated_at]
-        render json: TipSerializer.new(tip).to_serialized_json
+        
     end
 
     def update
