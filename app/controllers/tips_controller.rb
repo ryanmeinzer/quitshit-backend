@@ -2,19 +2,23 @@ class TipsController < ApplicationController
 
     def index
         tips = Tip.all
-        render json: tips, except: [:created_at, :updated_at]
+        # sorted_tips = tips.sort_by { |tip| tip.tip_count }
+        # without serializer:
+        # render json: tips, except: [:created_at, :updated_at]
+        render json: TipSerializer.new(tips).to_serialized_json
     end
 
     def create
-        # byebug
         tip = Tip.create(tip_params) 
-        render json: tip, except: [:created_at, :updated_at]
+        # render json: tip, except: [:created_at, :updated_at]
+        render json: TipSerializer.new(tip).to_serialized_json
     end
 
     def update
         tip = Tip.find(params[:id]) 
         tip.update(tip_params) 
-        render json: tip, except: [:created_at, :updated_at]
+        # render json: tip, except: [:created_at, :updated_at]
+        render json: TipSerializer.new(tip).to_serialized_json
     end
 
     private
