@@ -12,12 +12,14 @@ class ShitsController < ApplicationController
 
     def create
         shit = Shit.create(shit_params)
-        # if shit.name == "" || " "
-        #     render json: {message: 'this field is required'}
-        # else
+        # Shit.all.any? { |name| name == shit.name }
+        # if shit.name == "" || " " || 
+        if shit.valid?
+            render json: ShitSerializer.new(shit).to_serialized_json
+        else
         # render json: shit, except: [:created_at, :updated_at], include: [:tips]
-        render json: ShitSerializer.new(shit).to_serialized_json
-        # end
+            render json: {message: "'#{shit.name}' already exists as a shit 💩"}
+        end
     end
 
     def update
