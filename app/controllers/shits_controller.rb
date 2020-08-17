@@ -18,7 +18,7 @@ class ShitsController < ApplicationController
             render json: ShitSerializer.new(shit).to_serialized_json
         else
         # render json: shit, except: [:created_at, :updated_at], include: [:tips]
-            render json: {message: "'#{shit.name}' already exists as a shit 💩"}
+            render json: {message: "'#{shit.name}' already exists or includes an unpermitted character"}
         end
     end
 

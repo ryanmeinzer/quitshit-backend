@@ -13,7 +13,7 @@ class TipsController < ApplicationController
         if tip.valid?
             render json: TipSerializer.new(tip).to_serialized_json
         else
-            render json: {message: "'#{tip.description}' already exists as a quit tip 💡"}
+            render json: {message: "'#{tip.description}' already exists or includes an unpermitted character"}
         end
         # render json: tip, except: [:created_at, :updated_at]
         
